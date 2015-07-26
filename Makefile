@@ -12,7 +12,7 @@ updatenightly: local/bin/pmbp.pl
 
 ## ------ Setup ------
 
-deps: git-submodules pmbp-install deps-furuike deps-data deps-misc-tools
+deps: git-submodules pmbp-install deps-furuike deps-misc-tools deps-data
 
 git-submodules:
 	$(GIT) submodule update --init
