@@ -1,5 +1,3 @@
-# -*- Makefile -*-
-
 all:
 
 WGET = wget
@@ -14,7 +12,7 @@ updatenightly: local/bin/pmbp.pl
 
 ## ------ Setup ------
 
-deps: git-submodules pmbp-install
+deps: git-submodules pmbp-install deps-furuike deps-data deps-misc-tools
 
 git-submodules:
 	$(GIT) submodule update --init
@@ -32,6 +30,24 @@ pmbp-install: pmbp-upgrade
 	perl local/bin/pmbp.pl $(PMBP_OPTIONS) --install \
             --create-perl-command-shortcut @perl \
             --create-perl-command-shortcut @prove
+
+deps-data:
+	./perl bin/clone.pl mapping.txt local/suika
+
+deps-furuike:
+	./perl local/bin/pmbp.pl --install-perl-app https://github.com/wakaba/furuike
+
+deps-misc-tools: local/bin/git-set-timestamp.pl \
+  local/perl-latest/pm/lib/perl5/Extras/Path/Class.pm
+	./perl local/bin/pmbp.pl --install-module Path::Class
+
+local/perl-latest/pm/lib/perl5/Extras/Path/Class.pm:
+	mkdir -p local/perl-latest/pm/lib/perl5/Extras/Path
+	$(WGET) -O local/perl-latest/pm/lib/perl5/Extras/Path/Class.pm https://raw.githubusercontent.com/wakaba/perl-cmdutils/master/lib/Extras/Path/Class.pm
+
+local/bin/git-set-timestamp.pl:
+	mkdir -p local/bin
+	$(WGET) -O $@ https://raw.githubusercontent.com/wakaba/suika-git-tools/master/git/git-set-timestamp.pl
 
 ## ------ Tests ------
 
