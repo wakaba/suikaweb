@@ -22,8 +22,7 @@ for (split /\x0A/, $map_path->slurp) {
     warn "skipped\n";
   } else {
     (system 'git', 'clone', '--depth=1', $url, $repo_path) == 0 or die "Failed: $url";
+    (system './perl', 'local/bin/git-set-timestamp.pl', $repo_path) == 0
+        or die "Failed git-set-timestamp $repo_path";
   }
-
-  (system './perl', 'local/bin/git-set-timestamp.pl', $repo_path) == 0
-      or die "Failed git-set-timestamp $repo_path";
 }

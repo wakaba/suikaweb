@@ -1,6 +1,7 @@
 /             https://bitbucket.org/wakabatan/suika-root
 /admin/       https://bitbucket.org/wakabatan/suika-admin
 /chuubu/      https://bitbucket.org/wakabatan/suika-chuubu
+/norakuro/d/  https://bitbucket.org/wakabatan/suika-norakuro-d
 /okuchuu/     https://bitbucket.org/wakabatan/suika-okuchuu
 /sccc/        https://bitbucket.org/wakabatan/suika-sccc
 /~wakaba/     https://bitbucket.org/wakabatan/suika-wakaba

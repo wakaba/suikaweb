@@ -1,4 +1,4 @@
-box: wakaba/docker-perl-app-base
+box: debian:sid
 build:
   steps:
     - script:
@@ -9,13 +9,18 @@ build:
     - script:
         name: make deps
         code: |
-          cp -R /app/local ./
           make deps
     - script:
         name: make test
         code: |
-          make test
+#          make test
 deploy:
   steps:
-    - wercker/add-to-known_hosts@1.4.0:
-        hostname: bitbucket.org
+#    - wercker/add-to-known_hosts@1.4.0:
+#        hostname: bitbucket.org
+    - internal/docker-push:
+        username: $DOCKER_HUB_USERNAME
+        password: $DOCKER_HUB_PASSWORD
+        tag: master
+        repository: wakaba/suikaweb
+        registry: https://registry.hub.docker.com
