@@ -3,4 +3,4 @@ rootdir=$(cd $(dirname $0)/.. && pwd)
 
 cd $rootdir/local/furuike && \
 FURUIKE_DOCUMENT_ROOT=$rootdir/local/suika \
-exec ./plackup -s Twiggy -p 5511 bin/server.psgi
+exec ./plackup -s Twiggy -p 8080 bin/server.psgi
