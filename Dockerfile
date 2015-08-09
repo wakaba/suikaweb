@@ -3,7 +3,7 @@ FROM wakaba/docker-perl-app-base
 ADD Makefile /app/
 ADD mapping.txt /app/
 ADD bin /app/bin
-ADD config /app/config
+#ADD config /app/config
 ADD t /app/t
 
 RUN cd /app && make deps PMBP_OPTIONS=--execute-system-package-installer && \
