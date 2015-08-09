@@ -7,7 +7,7 @@ dependencies:
     - docker build -t wakaba/suikaweb .
 test:
   override:
-    - docker run -d -p 5793:5793 wakaba/suikaweb /server; sleep 10
+    - docker run -d -p 5793:5511 wakaba/suikaweb /server; sleep 10
     - make test
 deployment:
   hub:

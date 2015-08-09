@@ -55,7 +55,7 @@ PROVE = ./prove
 
 test: test-deps test-main
 
-test-deps: deps
+test-deps: git-submodules pmbp-install
 
 test-main:
 	$(PROVE) t/*.t
