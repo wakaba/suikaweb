@@ -1,7 +1,7 @@
 FROM wakaba/docker-perl-app-base
 
 RUN mv /app /app.orig && \
-    git clone https://bitbucket.org/wakabatan/suikaweb.git /app && \
+    git clone https://github.com/wakaba/suikaweb.git /app && \
     mv /app.orig/* /app/ && \
     cd /app && make deps PMBP_OPTIONS=--execute-system-package-installer && \
     make test && \
