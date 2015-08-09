@@ -12,9 +12,10 @@ dependencies:
     - docker build -t quay.io/wakaba/suikaweb .
 test:
   override:
-    - docker run -d -p 5793:5793 quay.io/wakaba/suikaweb /server; sleep 10
+    - docker run --name server -d -p 5793:5793 quay.io/wakaba/suikaweb /server; sleep 10
     #- make test
-#    - curl http://localhost:5793
+    - curl http://localhost:5793
+    - docker logs server
 deployment:
   hub:
     branch: master
