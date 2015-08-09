@@ -9,7 +9,7 @@ machine:
 dependencies:
   override:
     - docker info
-    - docker build -t wakaba/suikaweb .
+    - docker build -t quay.io/wakaba/suikaweb .
 test:
   override:
     - docker run -d -p 5793:5793 quay.io/wakaba/suikaweb /server; sleep 10
