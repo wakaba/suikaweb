@@ -1,5 +1,5 @@
 #!/bin/bash
-SUIKAWEB_HTTP_PORT=5511
+export SUIKAWEB_HTTP_PORT=5511
 
 echo "1..5"
 
