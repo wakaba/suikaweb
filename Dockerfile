@@ -13,5 +13,7 @@ RUN cd /app && \
     echo '#!/bin/bash' > /server && \
     echo 'exec /app/bin/server' >> /server && \
     chmod u+x /server && \
-    rm -fr /app/.git /app/deps /app.orig /app/local/furuike/deps && \
+    rm -fr /app/.git /app/local/furuike/.git && \
+    rm -fr /app/local/furuike/modules/*/.git && \
+    rm -fr /app/deps /app.orig /app/local/furuike/deps && \
     rm -fr /app/t /app/t_deps /app/local/furuike/t /app/local/furuike/t_deps
