@@ -31,3 +31,4 @@
 /www/markup/xml/      https://github.com/manakai/spec-dom
 /www/mozilla/         https://github.com/wakaba/mozilla-extensions
 /www/style/           https://bitbucket.org/wakabatan/suika-www-style
+/www/url/perl-weburl/ https://github.com/manakai/perl-web-url
