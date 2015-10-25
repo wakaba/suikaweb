@@ -21,6 +21,9 @@ else
 	$(MAKE) git-submodules
 endif
 	$(MAKE) pmbp-install deps-furuike deps-misc-tools deps-data
+ifdef PMBP_HEROKU_BUILDPACK
+	$(MAKE) heroku-remove-unused
+endif
 
 git-submodules:
 	$(GIT) submodule update --init
@@ -56,6 +59,11 @@ local/perl-latest/pm/lib/perl5/Extras/Path/Class.pm:
 local/bin/git-set-timestamp.pl:
 	mkdir -p local/bin
 	$(WGET) -O $@ https://raw.githubusercontent.com/wakaba/suika-git-tools/master/git/git-set-timestamp.pl
+
+heroku-remove-unused:
+	rm -fr .git modules/*/.git t t_deps deps
+	rm -fr local/furuike/.git local/furuike/modules/*/.git
+	rm -fr local/furuike/t local/furuike/t_deps local/furuike/deps
 
 ## ------ Tests ------
 
