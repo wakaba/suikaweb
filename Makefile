@@ -64,6 +64,8 @@ heroku-remove-unused:
 	rm -fr .git modules/*/.git t t_deps deps
 	rm -fr local/furuike/.git local/furuike/modules/*/.git
 	rm -fr local/furuike/t local/furuike/t_deps local/furuike/deps
+	rm -fr local/cpanm local/furuike/local/cpanm
+	rm -fr local/suika/.git
 
 ## ------ Tests ------
 
