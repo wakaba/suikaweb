@@ -20,9 +20,10 @@ ifdef PMBP_HEROKU_BUILDPACK
 else
 	$(MAKE) git-submodules
 endif
-	$(MAKE) pmbp-install deps-furuike deps-misc-tools deps-data
+	$(MAKE) pmbp-install deps-furuike deps-misc-tools
 ifdef PMBP_HEROKU_BUILDPACK
-	$(MAKE) heroku-remove-unused
+else
+	$(MAKE) deps-data
 endif
 
 git-submodules:

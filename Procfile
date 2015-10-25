@@ -1,1 +1,1 @@
-web: SUIKAWEB_HTTP_PORT=$PORT bin/server
+web: make deps-data && SUIKAWEB_HTTP_PORT=$PORT bin/server
