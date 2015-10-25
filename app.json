@@ -1,0 +1,7 @@
+{
+  "name": "suikaweb",
+  "website": "http://suika.suikawiki.org/",
+  "buildpacks": [
+    {"url": "https://github.com/wakaba/heroku-buildpack-perl-pmbp"}
+  ]
+}
