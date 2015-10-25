@@ -17,3 +17,5 @@ RUN cd /app && \
     rm -fr /app/local/furuike/modules/*/.git && \
     rm -fr /app/deps /app.orig /app/local/furuike/deps && \
     rm -fr /app/t /app/t_deps /app/local/furuike/t /app/local/furuike/t_deps
+
+CMD ["/server"]

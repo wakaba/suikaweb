@@ -3,4 +3,5 @@ rootdir=$(cd $(dirname $0)/.. && pwd)
 
 cd $rootdir/local/furuike && \
 FURUIKE_DOCUMENT_ROOT=$rootdir/local/suika \
+FURUIKE_HTML_FOOTER_FILE=$rootdir/html-footer \
 exec ./plackup -s Twiggy -p ${SUIKAWEB_HTTP_PORT:-8080} bin/server.psgi
