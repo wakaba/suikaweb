@@ -1,0 +1,1 @@
+web: SUIKAWEB_HTTP_PORT=$PORT bin/server
