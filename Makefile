@@ -59,6 +59,14 @@ deps-data-hero:
 	tar zxf local/hero-contents.tar.gz
 	mv hero-wiki/* local/suika/~hero/wiki/
 	mv hero-diary/* local/suika/~hero/Diary/
+	cat local/suika/~hero/.htaccess | \
+	    grep -v "^Redirect 301 /~hero/Diary/" | \
+	    grep -v "^Redirect 301 /~hero/wiki/wiki.cgi" > local/foo
+	cp local/foo local/suika/~hero/.htaccess
+	echo "Redirect 301 /~hero/wiki/wiki.cgi /~hero/wiki/{mypagepuny}" > local/suika/~hero/wiki/.htaccess
+	echo "DirectoryIndex RecentChanges-" >> local/suika/~hero/wiki/.htaccess
+	echo "RedirectMatch 301 /~hero/Diary/$ /~hero/Diary/{date}" > local/suika/~hero/Diary/.htaccess
+	echo "AddType application/rdf+xml .rdf" >> local/suika/~hero/Diary/.htaccess
 
 deps-furuike:
 	./perl local/bin/pmbp.pl --install-perl-app https://github.com/wakaba/furuike
