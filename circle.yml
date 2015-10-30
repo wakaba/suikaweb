@@ -8,9 +8,7 @@ deployment:
   hub:
     branch: firedata
     commands:
-      - echo '{"firebase": "' > firebase.json
-      - echo $FIREBASE_NAME >> firebase.json
-      - echo '", "public": "hoge", "ignore": ["**/.*"]}' >> firebase.json
+      - echo "{\"firebase\": \"$FIREBASE_NAME\", \"public\": \"hoge\", \"ignore\": [\"**/.*\"]}" > firebase.json
       - mkdir -p hoge
       - echo "foo" > hoge/abc.txt
       - firebase deploy --token $FIREBASE_TOKEN
