@@ -43,8 +43,22 @@ pmbp-install: pmbp-upgrade
             --create-perl-command-shortcut @perl \
             --create-perl-command-shortcut @prove
 
-deps-data:
+deps-data: deps-data-suika deps-data-hero
+
+deps-data-suika:
 	./perl bin/clone.pl mapping.txt local/suika
+
+deps-data-hero:
+	wget -O local/hero.tar "https://www.dropbox.com/s/nae4o9yt07d5enx/hero-pub-furuike.tar?dl=1"
+	tar xf local/hero.tar
+	mv public_html local/suika/~hero
+	mv local/suika/~hero/anime/nanohaA\'s.ja.html.sjis local/suika/~hero/anime/nanohaAs.ja.html.sjis
+	echo "ErrorDocument 404 /~hero/anime/nanohaAs" >> local/suika/~hero/anime/.htaccess
+	echo "Redirect 302 /~hero/N88BASICdayoon/latest /~hero/N88BASICdayoon/2006/03" >> local/suika/~hero/N88BASICdayoon/.htaccess
+	wget -O local/hero-contents.tar.gz "https://www.dropbox.com/s/fpsvgb10sypu2yr/hero-pub-contents.tar.gz?dl=1"
+	tar zxf local/hero-contents.tar.gz
+	mv hero-wiki/* local/suika/~hero/wiki/
+	mv hero-diary/* local/suika/~hero/Diary/
 
 deps-furuike:
 	./perl local/bin/pmbp.pl --install-perl-app https://github.com/wakaba/furuike
