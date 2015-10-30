@@ -1,24 +1,14 @@
-machine:
-#  services:
-#    - docker
-  pre:
-    - |
-      sudo curl -L -o /usr/bin/docker 'http://s3-external-1.amazonaws.com/circle-downloads/docker-1.6.2-circleci'
-      sudo chmod 0755 /usr/bin/docker
-      sudo start docker
 dependencies:
   override:
-    - docker info
-    - docker build -t quay.io/wakaba/suikaweb .
+    - npm install -g firebase-tools
 test:
   override:
-    - docker run --name server -d -p 5511:8080 quay.io/wakaba/suikaweb /server; sleep 10
-    #- make test
-    - curl http://localhost:5511
-    - docker logs server
+    - echo
 deployment:
   hub:
-    branch: master
+    branch: firedata
     commands:
-      - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS quay.io
-      - docker push quay.io/wakaba/suikaweb
+      - echo '{"firebase": "'$FIREBASE_NAME'", "public": "hoge", "ignore": ["**/.*"]}' > firebase.json
+      - mkdir -p hoge
+      - echo "foo" > hoge/abc.txt
+      - firebase deploy --token $FIREBASE_TOKEN
