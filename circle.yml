@@ -1,11 +1,6 @@
 machine:
-#  services:
-#    - docker
-  pre:
-    - |
-      sudo curl -L -o /usr/bin/docker 'http://s3-external-1.amazonaws.com/circle-downloads/docker-1.6.2-circleci'
-      sudo chmod 0755 /usr/bin/docker
-      sudo start docker
+  services:
+    - docker
 dependencies:
   override:
     - docker info
@@ -13,7 +8,6 @@ dependencies:
 test:
   override:
     - docker run --name server -d -p 5511:8080 quay.io/wakaba/suikaweb /server; sleep 10
-    #- make test
     - curl http://localhost:5511
     - docker logs server
 deployment:
