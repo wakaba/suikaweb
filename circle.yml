@@ -8,7 +8,8 @@ deployment:
   hub:
     branch: firedata
     commands:
-      - echo "{\"firebase\":\"$FIREBASE_NAME\", \"public\":\"hoge\", \"ignore\":[\"**/.*\"]}" > firebase.json
-      - mkdir -p hoge
-      - echo "foo" > hoge/abc.txt
-      - firebase deploy --token $FIREBASE_TOKEN
+      - wget -O hero-public.tar https://www.dropbox.com/s/bey1ixpvb6br3mj/hero-public.tar?dl=1
+      - tar xf hero-public.tar
+      - mkdir -p public && mv public_html public/hero
+      - echo "{\"firebase\":\"$FIREBASE_NAME\", \"public\":\"public\", \"ignore\":[\"**/.*\"]}" > firebase.json
+      - firebase deploy:hosting --token $FIREBASE_TOKEN
