@@ -103,7 +103,7 @@ deps-data-heroku:
 	git init && \
 	git remote add origin https://bitbucket.org/wakabatan/suika-wakaba && \
 	git fetch origin && \
-	git checkout art
+	git checkout origin/master
 	./perl local/bin/git-set-timestamp.pl local/suika/~wakaba
 
 ## ------ Tests ------
