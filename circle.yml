@@ -3,6 +3,8 @@ machine:
     - docker
 dependencies:
   override:
+    - git config --global user.email "temp@circleci.test"
+    - git config --global user.name "CircleCI"
     - docker info
     - docker build -t quay.io/wakaba/suikaweb .
 test:
