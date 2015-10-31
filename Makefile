@@ -65,6 +65,7 @@ deps-data-hero:
 	cp local/foo local/suika/~hero/.htaccess
 	echo "Redirect 301 /~hero/wiki/wiki.cgi /~hero/wiki/{mypagepuny}" > local/suika/~hero/wiki/.htaccess
 	echo "DirectoryIndex RecentChanges-" >> local/suika/~hero/wiki/.htaccess
+	echo "ErrorDocument 404 /~hero/wiki/RecentChanges-" >> local/suika/~hero/wiki/.htaccess
 	echo "RedirectMatch 301 /~hero/Diary/$ /~hero/Diary/{date}" > local/suika/~hero/Diary/.htaccess
 	echo "AddType application/rdf+xml .rdf" >> local/suika/~hero/Diary/.htaccess
 
