@@ -91,7 +91,7 @@ create-commit-for-heroku:
 	rm -fr local/furuike/t local/furuike/t_deps local/furuike/deps
 	rm -fr local/cpanm local/furuike/local/cpanm
 	find local/suika | grep '/\.git$$' | xargs rm -fr
-	rm -fr local/suika/~wakaba/art
+	rm -fr local/suika/~wakaba
 	#git rm .gitmodules
 	#git rm modules/* --cached
 	#git add -f modules/*/*
@@ -99,11 +99,7 @@ create-commit-for-heroku:
 	git commit -m "for heroku"
 
 deps-data-heroku:
-	cd local/suika/~wakaba && \
-	git init && \
-	git remote add origin https://bitbucket.org/wakabatan/suika-wakaba && \
-	git fetch origin && \
-	git checkout origin/master
+	git clone https://bitbucket.org/wakabatan/suika-wakaba local/suika/~wakaba
 	./perl local/bin/git-set-timestamp.pl local/suika/~wakaba
 
 ## ------ Tests ------
