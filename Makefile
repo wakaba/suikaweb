@@ -85,7 +85,7 @@ local/bin/git-set-timestamp.pl:
 
 create-commit-for-heroku:
 	git remote rm origin
-	rm -fr .git modules/*/.git t t_deps deps
+	rm -fr modules/*/.git t t_deps deps
 	rm -fr local/furuike/.git local/furuike/modules/*/.git
 	rm -fr local/furuike/t local/furuike/t_deps local/furuike/deps
 	rm -fr local/cpanm local/furuike/local/cpanm
