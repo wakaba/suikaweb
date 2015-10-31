@@ -20,10 +20,10 @@ ifdef PMBP_HEROKU_BUILDPACK
 else
 	$(MAKE) git-submodules
 endif
-	$(MAKE) pmbp-install deps-furuike deps-misc-tools
+	$(MAKE) pmbp-install
 ifdef PMBP_HEROKU_BUILDPACK
 else
-	$(MAKE) deps-data
+	$(MAKE) deps-furuike deps-misc-tools deps-data
 endif
 
 git-submodules:
@@ -83,12 +83,27 @@ local/bin/git-set-timestamp.pl:
 	mkdir -p local/bin
 	$(WGET) -O $@ https://raw.githubusercontent.com/wakaba/suika-git-tools/master/git/git-set-timestamp.pl
 
-heroku-remove-unused:
+create-commit-for-heroku:
+	git remote rm origin
 	rm -fr .git modules/*/.git t t_deps deps
 	rm -fr local/furuike/.git local/furuike/modules/*/.git
 	rm -fr local/furuike/t local/furuike/t_deps local/furuike/deps
 	rm -fr local/cpanm local/furuike/local/cpanm
-	rm -fr local/suika/.git
+	find local/suika | grep '/\.git$$' | xargs rm -fr
+	rm -fr local/suika/~wakaba/art
+	git rm .gitmodules
+	#git rm modules/* --cached
+	#git add -f modules/*/*
+	git add -f local/suika local/bin
+	git commit -m "for heroku"
+
+deps-data-heroku:
+	cd local/suika/~wakaba && \
+	git init && \
+	git remote add origin https://bitbucket.org/wakabatan/suika-wakaba && \
+	git fetch origin && \
+	git checkout art
+	./perl local/bin/git-set-timestamp.pl local/suika/~wakaba
 
 ## ------ Tests ------
 

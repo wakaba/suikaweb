@@ -1,1 +1,1 @@
-web: (make deps-data &); SUIKAWEB_HTTP_PORT=$PORT bin/server
+web: (make deps-data-heroku &); SUIKAWEB_HTTP_PORT=$PORT bin/server

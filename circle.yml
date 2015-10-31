@@ -16,3 +16,7 @@ deployment:
     commands:
       - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS quay.io
       - docker push quay.io/wakaba/suikaweb
+
+      - make create-commit-for-heroku
+      - "[[ ! -s \"$(git rev-parse --git-dir)/shallow\" ]] || git fetch --unshallow"
+      - git push git@heroku.com:suikaweb.git +`git rev-parse HEAD`:refs/heads/master
