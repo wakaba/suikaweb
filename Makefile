@@ -95,7 +95,7 @@ create-commit-for-heroku:
 	#git rm .gitmodules
 	#git rm modules/* --cached
 	#git add -f modules/*/*
-	git add -f local/suika local/bin
+	git add -f local/suika local/bin local/furuike
 	git commit -m "for heroku"
 
 deps-data-heroku:
