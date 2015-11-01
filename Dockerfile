@@ -1,4 +1,4 @@
-FROM wakaba/docker-perl-app-base
+FROM quay.io/wakaba/docker-perl-app-base
 
 ADD Makefile /app/
 ADD mapping.txt /app/
