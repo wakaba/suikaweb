@@ -1,0 +1,99 @@
+archive         
+char            
+char/charinfo.git       https://github.com/wakaba/charinfo-cgi
+charclass.git           https://github.com/wakaba/perl-charclass
+chartables.git          https://github.com/wakaba/data-chartables
+doc-perl-locale.git     https://github.com/wakaba/doc-perl-locale
+domperl-sketch.git      https://github.com/manakai/domperl-sketch
+gitwi.git               https://bitbucket.org/wakabatan/suika-gitwi
+harusame.git            https://github.com/wakaba/harusame
+manakai-charlib.git     https://github.com/manakai/manakai-charlib
+manakai.git             https://github.com/wakaba/manakai
+markup                  
+markup/cssexts.git      https://github.com/manakai/spec-ssft
+markup/h2h.git          https://github.com/wakaba/h2h
+markup/hsml.git         https://github.com/wakaba/hsml
+markup/htmlexts.git     https://github.com/manakai/spec-obsvocab
+markup/misc.git         https://github.com/wakaba/suika-www-markup
+markup/rfclang.git      https://github.com/wakaba/rfclang
+markup/slidepacker-2005.git     https://github.com/wakaba/slidepacker-2005
+markup/swml.git                 https://github.com/suikawiki/spec-swml
+markup/xmlexts.git              https://github.com/manakai/spec-dom
+messages                        
+messages/bunshin.git            https://github.com/manakai/bunshin
+messages/suikawari.git          https://bitbucket.org/wakabatan/suikawari
+migemojs.git                    https://github.com/wakaba/migemojs
+misc                            
+misc/kanzan-2002.git            https://github.com/wakaba/kanzan-2002
+misc/namazu-filters.git         https://github.com/wakaba/namazu-filters
+misc/simgraph-core-2006.git     https://github.com/wakaba/simgraph-core-2006
+misc-tools.git                  https://github.com/wakaba/misc-tools
+net                             
+net/netaddradmin-2007.git       https://github.com/wakaba/netaddradmin-2007
+net/rfc-ja-translations.git     https://github.com/wakaba/rfc-ja-translations
+perl                            
+perl/cmdutils.git               https://github.com/wakaba/perl-cmdutils
+perl/dongry.git                 https://github.com/wakaba/dongry
+perl/ministores.git             https://github.com/wakaba/perl-ministores
+perl/miscutils.git              https://github.com/wakaba/misc-tools
+perl/oldencodeutils.git         https://github.com/wakaba/perl-encode-utils
+perl/rdb-utils.git              https://github.com/wakaba/perl-rdb-utils
+perl/regexp.git                 https://github.com/wakaba/perl-regexp-utils
+perl/webutils.git               https://github.com/wakaba/perl-web-utils
+rpm                             
+rpm/specs.git                   https://bitbucket.org/wakabatan/rpm-specs
+sami.git                        https://github.com/wakaba/samijs
+suikaweb                        
+suikaweb/accounts.git           https://github.com/wakaba/suika-accounts-2008
+suikaweb/admin.git              https://bitbucket.org/wakabatan/suika-admin
+suikaweb/chuubu.git             https://bitbucket.org/wakabatan/suika-chuubu
+suikaweb/okuchuu.git            https://bitbucket.org/wakabatan/suika-okuchuu
+suikaweb/root.git               https://bitbucket.org/wakabatan/suika-root
+suikaweb/sccc.git               https://bitbucket.org/wakabatan/suika-sccc
+suikaweb/ssmchat.git            https://bitbucket.org/wakabatan/ssmchat
+suikaweb/styles.git             https://bitbucket.org/wakabatan/suika-www-style
+suikawiki-driver.git            https://github.com/suikawiki/suikawiki-driver
+suikawiki-engine.git            https://github.com/suikawiki/suikawiki-engine
+swworld.git                     https://bitbucket.org/wakabatan/swworld
+test.git                        https://github.com/wakaba/nemui
+tools                           
+tools/pig.git                   https://github.com/wakaba/pig
+tools/progressreport-2008.git   https://github.com/wakaba/progressreport-2008
+tools/schedulemanager-2007.git  https://github.com/wakaba/schedulemanager-2007
+vc                              
+vc/cvscommitfeed.git            https://github.com/wakaba/commitfeed
+vc/vcutils.git                  https://github.com/wakaba/perl-vcutils
+vc/viewvc.git                   https://bitbucket.org/wakabatan/suika-viewvc
+wakaba-fuyubi.git               https://bitbucket.org/wakabatan/fuyubi
+wakaba-suikaweb.git             https://bitbucket.org/wakabatan/suika-wakaba
+wanage.git                      https://github.com/wakaba/wanage
+web                             
+web/antennaconfs.git            https://bitbucket.org/wakabatan/suika-antenna-confs
+web/anyevent-httpserver.git     https://github.com/wakaba/perl-anyevent-httpserver
+web/chrome-hatena-star-everywhere.git   https://github.com/wakaba/chrome-hatena-star-everywhere
+web/comma-tools.git                     https://bitbucket.org/wakabatan/suika-comma-tools
+web/iemenu-2002.git                     https://github.com/wakaba/iemenu
+web/imageannotator.git                  https://github.com/wakaba/imageannotator-2005
+web/jswebbrowser-2005.git               https://github.com/wakaba/bidom
+web/livecssomviewer.git                 https://github.com/manakai/livecssomviewer
+web/mixicrawler-2008.git                https://github.com/wakaba/mixi-crawler-2008
+web/mozilla-extensions.git              https://github.com/wakaba/mozilla-extensions
+web/perl-web-url.git                    https://github.com/manakai/perl-web-url
+web/perl-webservice-mygengo-lite.git    https://github.com/wakaba/perl-webservice-mygengo-lite
+web/perl-weburl.git                     https://github.com/wakaba/perl-weburl
+web/remotecanvas-2009.git               https://github.com/wakaba/remotecanvas
+web/schemadb-data.git                   https://bitbucket.org/wakabatan/schemadb-data
+web/schemadb.git                        https://github.com/wakaba/schemadb
+web/swantenna.git                       https://bitbucket.org/wakabatan/swantenna
+web/tama.git                            https://github.com/wakaba/tama
+web/temma.git                           https://github.com/wakaba/temma
+web/testdataparser.git                  https://github.com/wakaba/testdataparser
+web/testresultlist.git                  https://github.com/wakaba/testresultlist
+web/tests-perl-uri.git                  https://github.com/wakaba/tests-web-url
+web/tests-web.git                       https://github.com/wakaba/tests-web
+web/webidl2tests.git                    https://github.com/wakaba/webidl2tests
+web/wikipediadb.git                     https://github.com/geocol/data-jp-schools
+web/wparchiver.git                      https://bitbucket.org/wakabatan/wparchive
+web/wwwmisc.git                         https://bitbucket.org/wakabatan/suika-www
+web/xpointer-js.git                     https://github.com/wakaba/xpointer-js
+webhacc.git                             https://github.com/wakaba/webhacc

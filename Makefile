@@ -45,8 +45,10 @@ pmbp-install: pmbp-upgrade
 
 deps-data: deps-data-suika deps-data-hero
 
-deps-data-suika:
+deps-data-suika: gitrepos.htaccess
 	./perl bin/clone.pl mapping.txt local/suika
+	mkdir -p local/suika/gate/git
+	cp gitrepos.htaccess local/suika/gate/git/.htaccess
 
 deps-data-hero:
 	wget -O local/hero.tar "https://www.dropbox.com/s/nae4o9yt07d5enx/hero-pub-furuike.tar?dl=1"
@@ -68,6 +70,9 @@ deps-data-hero:
 	echo "ErrorDocument 404 /~hero/wiki/RecentChanges-" >> local/suika/~hero/wiki/.htaccess
 	echo "RedirectMatch 301 /~hero/Diary/$ /~hero/Diary/{date}" > local/suika/~hero/Diary/.htaccess
 	echo "AddType application/rdf+xml .rdf" >> local/suika/~hero/Diary/.htaccess
+
+gitrepos.htaccess: gitrepos.txt gitrepos.pl
+	perl gitrepos.pl < gitrepos.txt > $@
 
 deps-furuike:
 	./perl local/bin/pmbp.pl --install-perl-app https://github.com/wakaba/furuike
