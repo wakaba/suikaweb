@@ -2,6 +2,8 @@ FROM wakaba/docker-perl-app-base
 
 ADD Makefile /app/
 ADD mapping.txt /app/
+ADD gitrepos.txt /app/
+ADD gitrepos.pl /app/
 ADD html-footer /app/
 ADD bin /app/bin
 #ADD config /app/config
