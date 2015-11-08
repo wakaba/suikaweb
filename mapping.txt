@@ -14,7 +14,6 @@
 /regexp/              https://github.com/wakaba/perl-regexp-utils
 /rfc/ja-translations/ https://github.com/wakaba/rfc-ja-translations
 /vcutils/             https://github.com/wakaba/perl-vcutils
-/webidl2tests/        https://github.com/wakaba/webidl2tests
 /www/2005/xpointer-js/ https://github.com/wakaba/xpointer-js
 /www/canvas/remote/   https://github.com/wakaba/remotecanvas
 /www/charclass/       https://github.com/wakaba/perl-charclass
@@ -34,3 +33,4 @@
 /www/mozilla/         https://github.com/wakaba/mozilla-extensions
 /www/style/           https://bitbucket.org/wakabatan/suika-www-style
 /www/url/perl-weburl/ https://github.com/manakai/perl-web-url
+/www/webidl2tests/    https://github.com/wakaba/webidl2tests
