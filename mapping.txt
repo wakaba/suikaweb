@@ -8,6 +8,7 @@
 /~wakaba/d/   https://bitbucket.org/wakabatan/fuyubi
 /www/         https://bitbucket.org/wakabatan/suika-www
 
+/commitfeed/          https://github.com/wakaba/commitfeed
 /gate/2007/cssom/     https://github.com/wakaba/livecssomviewer
 /migemojs/            https://github.com/wakaba/migemojs
 /regexp/              https://github.com/wakaba/perl-regexp-utils
