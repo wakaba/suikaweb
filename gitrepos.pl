@@ -9,6 +9,6 @@ while (<>) {
     my $type = $url =~ /github/ ? 'github' : 'bitbucket';
     print qq{Redirect 302 /gate/git/wi/$path/ $url/{$type}\n};
     print qq{Redirect 302 /gate/git/wi/$path.git/ $url/{$type}\n};
-    print qq{Redirect 302 /gate/git/bare/$path.git/ $url/\n};
+    print qq{Redirect 302 /gate/git/bare/$path.git/ $url.git/\n};
   }
 }
