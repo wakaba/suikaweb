@@ -15,7 +15,7 @@
 /rfc/ja-translations/ https://github.com/wakaba/rfc-ja-translations
 /vcutils/             https://github.com/wakaba/perl-vcutils
 /webidl2tests/        https://github.com/wakaba/webidl2tests
-/www/2005/xpointer/   https://github.com/wakaba/xpointer-js
+/www/2005/xpointer-js/ https://github.com/wakaba/xpointer-js
 /www/canvas/remote/   https://github.com/wakaba/remotecanvas
 /www/charclass/       https://github.com/wakaba/perl-charclass
 /www/harusame/        https://github.com/wakaba/harusame
