@@ -5,6 +5,7 @@ ADD mapping.txt /app/
 ADD gitrepos.txt /app/
 ADD gitrepos.pl /app/
 ADD html-footer /app/
+ADD git-index.html /app/
 ADD bin /app/bin
 #ADD config /app/config
 ADD t /app/t

@@ -49,8 +49,8 @@ deps-data-suika: gitrepos.htaccess
 	./perl bin/clone.pl mapping.txt local/suika
 	mkdir -p local/suika/gate/git/wi local/suika/gate/git/bare
 	cp gitrepos.htaccess local/suika/gate/git/.htaccess
-	echo "<a href=/news#d2015-11-08>Moved</a>" > local/suika/gate/git/wi/index.html
-	echo "<a href=/news#d2015-11-08>Moved</a>" > local/suika/gate/git/bare/index.html
+	cp git-index.html local/suika/gate/git/wi/index.html
+	cp git-index.html local/suika/gate/git/bare/index.html
 
 deps-data-hero:
 	wget -O local/hero.tar "https://www.dropbox.com/s/nae4o9yt07d5enx/hero-pub-furuike.tar?dl=1"
