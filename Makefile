@@ -53,14 +53,14 @@ deps-data-suika: gitrepos.htaccess
 	cp git-index.html local/suika/gate/git/bare/index.html
 
 deps-data-hero:
-	wget -O local/hero.tar "https://www.dropbox.com/s/nae4o9yt07d5enx/hero-pub-furuike.tar?dl=1"
-	tar xf local/hero.tar
+	mkdir -p local
+	git clone https://bitbucket.org/wakabatan/suikaweb-pubdata.git local/pubdata --depth 1
+	tar xf local/pubdata/hero-pub-furuike.tar
 	mv public_html local/suika/~hero
 	mv local/suika/~hero/anime/nanohaA\'s.ja.html.sjis local/suika/~hero/anime/nanohaAs.ja.html.sjis
 	echo "ErrorDocument 404 /~hero/anime/nanohaAs" >> local/suika/~hero/anime/.htaccess
 	echo "Redirect 302 /~hero/N88BASICdayoon/latest /~hero/N88BASICdayoon/2006/03" >> local/suika/~hero/N88BASICdayoon/.htaccess
-	wget -O local/hero-contents.tar.gz "https://www.dropbox.com/s/fpsvgb10sypu2yr/hero-pub-contents.tar.gz?dl=1"
-	tar zxf local/hero-contents.tar.gz
+	tar zxf local/pubdata/hero-pub-contents.tar.gz
 	mv hero-wiki/* local/suika/~hero/wiki/
 	mv hero-diary/* local/suika/~hero/Diary/
 	cat local/suika/~hero/.htaccess | \
