@@ -93,7 +93,7 @@ create-commit-for-heroku:
 	rm -fr local/furuike/t local/furuike/t_deps local/furuike/deps
 	rm -fr local/cpanm local/furuike/local/cpanm
 	find local/suika | grep '/\.git$$' | xargs rm -fr
-	rm -fr local/suika/~wakaba
+	rm -fr local/suika/~wakaba local/suika/~hero
 	#git rm .gitmodules
 	#git rm modules/* --cached
 	#git add -f modules/*/*
