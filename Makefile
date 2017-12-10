@@ -55,7 +55,8 @@ deps-data-suika: gitrepos.htaccess
 deps-data-hero:
 	mkdir -p local
 	git clone https://bitbucket.org/wakabatan/suikaweb-pubdata.git local/pubdata --depth 1
-	tar xf local/pubdata/hero-pub-furuike.tar
+	#tar xf local/pubdata/hero-pub-furuike.tar
+	tar xf local/pubdata/hero-public.tar
 	mv public_html local/suika/~hero
 	mv local/suika/~hero/anime/nanohaA\'s.ja.html.sjis local/suika/~hero/anime/nanohaAs.ja.html.sjis
 	echo "ErrorDocument 404 /~hero/anime/nanohaAs" >> local/suika/~hero/anime/.htaccess
