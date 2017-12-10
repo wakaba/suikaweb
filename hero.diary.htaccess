@@ -1,0 +1,2 @@
+RedirectMatch 301 /~hero/Diary/$ /~hero/Diary/{date}
+AddType application/rdf+xml .rdf

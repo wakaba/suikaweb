@@ -1,0 +1,3 @@
+Redirect 301 /~hero/wiki/wiki.cgi /~hero/wiki/{mypagepuny}
+DirectoryIndex RecentChanges-
+ErrorDocument 404 /~hero/wiki/RecentChanges-

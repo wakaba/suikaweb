@@ -1,0 +1,45 @@
+AddDefaultCharset iso-2022-jp
+
+AddCharset Shift_JIS .sjis
+AddCharset UTF-8 .u8
+AddCharset EUC-JP .euc
+
+AddType text/html .htm .html
+
+AddType application/xml .xml
+AddCharset iso-2022-jp .xml
+
+AddType application/xml .xsl
+AddCharset iso-2022-jp .xsl
+
+AddType application/msword .doc .DOC
+
+AddType application/pdf .pdf .PDF
+
+AddType image/vnd.microsoft.icon .ico
+
+AddType image/gif .gif
+
+DirectoryIndex cover menu contents index
+
+AddType video/avi .avi .AVI
+AddType video/ogg .ogm
+
+AddType image/jpeg .jpg .jpeg .JPG
+
+AddType application/octet-stream .iso .img
+
+## Image Listing
+#<Files "LIST">
+#  Action piclist /okuchuu/piclist
+#  SetHandler piclist
+#</Files>
+
+Redirect gone /~hero/private
+
+Redirect 403 /~hero/shiryou/
+Redirect 403 /~hero/sotsuron
+Redirect 403 /~hero/sotsuron.pdf
+Redirect 403 /~hero/tex.zip
+Redirect 403 /~hero/mtl/
+Redirect 403 /~hero/new/
