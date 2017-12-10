@@ -8,8 +8,8 @@ deployment:
   hub:
     branch: firedata
     commands:
-      - wget -O hero-public.tar https://www.dropbox.com/s/bey1ixpvb6br3mj/hero-public.tar?dl=1
-      - tar xf hero-public.tar
+      - git clone https://bitbucket.org/wakabatan/suikaweb-pubdata.git local/pubdata --depth 1
+      - tar xf local/pubdata/hero-public.tar
       - mkdir -p public && mv public_html public/hero
       - echo "{\"firebase\":\"$FIREBASE_NAME\", \"public\":\"public\", \"ignore\":[\"**/.*\"]}" > firebase.json
       - firebase deploy:hosting --token $FIREBASE_TOKEN
