@@ -18,7 +18,7 @@ deployment:
     commands:
       - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS quay.io
       - docker push quay.io/wakaba/suikaweb
-      - curl -f -L -X POST --connect-timeout 600 $SUIKA_UPDATE_URL
+      - curl -f -L -X POST $SUIKA_UPDATE_URL
 
       - "[[ ! -s \"$(git rev-parse --git-dir)/shallow\" ]] || git fetch --unshallow"
       - make deps
