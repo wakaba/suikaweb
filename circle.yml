@@ -16,4 +16,4 @@ deployment:
       - tar xf local/pubdata/hero-public.tar
       - mkdir -p public && mv public_html public/hero
       - echo "{\"firebase\":\"$FIREBASE_NAME\", \"public\":\"public\", \"ignore\":[\"**/.*\"]}" > firebase.json
-      - firebase deploy:hosting --token $FIREBASE_TOKEN
+      - firebase deploy --only hosting --token $FIREBASE_TOKEN
