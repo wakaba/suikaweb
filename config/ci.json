@@ -1,8 +1,5 @@
 {
   "circleci": {
-    "build": [
-      "make deps deps-data viewvc"
-    ],
     "tests": [
       "docker run --name server -d -p 5511:8080 quay.io/wakaba/suikaweb /server; sleep 10",
       "curl -f http://localhost:5511",

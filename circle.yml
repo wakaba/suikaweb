@@ -1,7 +1,6 @@
 {
    "dependencies" : {
       "override" : [
-         "make deps viewvc",
          "docker info",
          "docker build -t quay.io/wakaba/suikaweb .",
          "git config --global user.email \u0022temp@circleci.test\u0022",
