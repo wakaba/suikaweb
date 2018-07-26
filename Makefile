@@ -9,6 +9,7 @@ updatenightly: local/bin/pmbp.pl
 	$(GIT) add modules t_deps/modules
 	perl local/bin/pmbp.pl --update
 	$(GIT) add config
+	$(CURL) -sSLf https://raw.githubusercontent.com/wakaba/ciconfig/master/ciconfig | RUN_GIT=1 REMOVE_UNUSED=1 perl
 
 ## ------ Setup ------
 
@@ -86,7 +87,7 @@ local/bin/git-set-timestamp.pl:
 	mkdir -p local/bin
 	$(WGET) -O $@ https://raw.githubusercontent.com/wakaba/suika-git-tools/master/git/git-set-timestamp.pl
 
-create-commit-for-heroku:
+create-commit-for-heroku: deps
 	git remote rm origin
 	rm -fr modules/*/.git t t_deps deps
 	rm -fr local/furuike/.git local/furuike/modules/*/.git
