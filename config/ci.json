@@ -14,7 +14,7 @@
         "curl -f -L -X POST $SUIKA_UPDATE_URL"
       ]
     },
-    "docker-build": "quay.io/suikawiki/suikaweb",
+    "docker-build": "quay.io/wakaba/suikaweb",
     "gaa": true
   }
 }
