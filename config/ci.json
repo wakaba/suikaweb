@@ -1,0 +1,17 @@
+{
+  "circleci": {
+    "tests": [
+      "docker run --name server -d -p 5511:8080 quay.io/wakaba/suikaweb /server; sleep 10",
+      "curl -f http://localhost:5511",
+      "docker logs server"
+    ],
+    "merger": true,
+    "heroku": {
+      "pushed": [
+        "curl -f -L -X POST $SUIKA_UPDATE_URL"
+      ]
+    },
+    "docker-build": "quay.io/wakaba/suikaweb",
+    "gaa": true
+  }
+}
