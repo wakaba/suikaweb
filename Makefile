@@ -88,6 +88,7 @@ local/bin/git-set-timestamp.pl:
 	$(WGET) -O $@ https://raw.githubusercontent.com/wakaba/suika-git-tools/master/git/git-set-timestamp.pl
 
 create-commit-for-heroku: deps
+	git config --global url."https://_:$$HEROKU_API_KEY@git.heroku.com/".insteadOf git@heroku.com:
 	git remote rm origin
 	rm -fr modules/*/.git t t_deps deps
 	rm -fr local/furuike/.git local/furuike/modules/*/.git
