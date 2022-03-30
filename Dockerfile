@@ -28,7 +28,7 @@ ADD hero.diary.htaccess /app/hero.diary.htaccess
 
 RUN cd /app && \
     git init && \
-    make deps PMBP_OPTIONS=--execute-system-package-installer && \
+    CI=1 make deps PMBP_OPTIONS=--execute-system-package-installer && \
     make test && \
     echo '#!/bin/bash' > /server && \
     echo 'exec /app/bin/server' >> /server && \
