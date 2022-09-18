@@ -5,7 +5,7 @@
             "CIRCLE_ARTIFACTS" : "/tmp/circle-artifacts/build"
          },
          "machine" : {
-            "image" : "ubuntu-2004:202008-01"
+            "image" : "ubuntu-2004:202101-01"
          },
          "steps" : [
             "checkout",
@@ -25,91 +25,112 @@
                }
             },
             {
-               "run" : {
-                  "command" : "git config --global user.email \u0022temp@circleci.test\u0022\u000Agit config --global user.name \u0022CircleCI\u0022"
-               }
-            },
-            {
-               "run" : {
-                  "command" : "docker run --name server -d -p 5511:8080 quay.io/wakaba/suikaweb /server; sleep 10"
-               }
-            },
-            {
-               "run" : {
-                  "command" : "curl -f http://localhost:5511"
-               }
-            },
-            {
-               "run" : {
-                  "command" : "docker logs server"
-               }
-            },
-            {
                "store_artifacts" : {
                   "path" : "/tmp/circle-artifacts/build"
                }
             },
             {
-               "deploy" : {
-                  "command" : "if [ \u0022${CIRCLE_BRANCH}\u0022 == 'master' ]; then\u000Atrue\u000Adocker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS quay.io || docker login -u $DOCKER_USER -p $DOCKER_PASS quay.io\u000Afi"
+               "run" : {
+                  "command" : "mkdir -p .ciconfigtemp/dockerimages/quay.io/wakaba/"
+               }
+            },
+            {
+               "run" : {
+                  "command" : "docker save -o .ciconfigtemp/dockerimages/quay.io/wakaba/suikaweb.tar quay.io/wakaba/suikaweb"
+               }
+            },
+            {
+               "persist_to_workspace" : {
+                  "paths" : [
+                     ".ciconfigtemp"
+                  ],
+                  "root" : "./"
+               }
+            }
+         ]
+      },
+      "deploy_master" : {
+         "machine" : {
+            "image" : "ubuntu-2004:202101-01"
+         },
+         "steps" : [
+            "checkout",
+            {
+               "attach_workspace" : {
+                  "at" : "./"
+               }
+            },
+            {
+               "run" : {
+                  "command" : "docker load -i .ciconfigtemp/dockerimages/quay.io/wakaba/suikaweb.tar"
                }
             },
             {
                "deploy" : {
-                  "command" : "if [ \u0022${CIRCLE_BRANCH}\u0022 == 'master' ]; then\u000Atrue\u000Adocker push quay.io/wakaba/suikaweb && curl -sSLf $BWALL_URL -X POST\u000Afi"
+                  "command" : "docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS quay.io || docker login -u $DOCKER_USER -p $DOCKER_PASS quay.io"
                }
             },
             {
                "deploy" : {
-                  "command" : "if [ \u0022${CIRCLE_BRANCH}\u0022 == 'master' ]; then\u000Atrue\u000Agit checkout --orphan herokucommit && git commit -m \u0022Heroku base commit\u0022\u000Afi"
+                  "command" : "docker push quay.io/wakaba/suikaweb"
                }
             },
             {
                "deploy" : {
-                  "command" : "if [ \u0022${CIRCLE_BRANCH}\u0022 == 'master' ]; then\u000Atrue\u000Amake create-commit-for-heroku\u000Afi"
-               }
-            },
-            {
-               "deploy" : {
-                  "command" : "if [ \u0022${CIRCLE_BRANCH}\u0022 == 'master' ]; then\u000Atrue\u000Agit push git@heroku.com:$HEROKU_APP_NAME.git \u002B`git rev-parse HEAD`:refs/heads/master\u000Afi"
-               }
-            },
-            {
-               "deploy" : {
-                  "command" : "if [ \u0022${CIRCLE_BRANCH}\u0022 == 'master' ]; then\u000Atrue\u000Acurl -f -L -X POST $SUIKA_UPDATE_URL\u000Afi"
+                  "command" : "curl -sSf $BWALLER_URL | BWALL_GROUP=docker BWALL_NAME=quay.io/wakaba/suikaweb bash"
                }
             }
          ]
       },
       "deploy_nightly" : {
          "machine" : {
-            "image" : "ubuntu-2004:202008-01"
+            "image" : "ubuntu-2004:202101-01"
          },
          "steps" : [
             "checkout",
             {
+               "attach_workspace" : {
+                  "at" : "./"
+               }
+            },
+            {
+               "run" : {
+                  "command" : "docker load -i .ciconfigtemp/dockerimages/quay.io/wakaba/suikaweb.tar"
+               }
+            },
+            {
                "deploy" : {
-                  "command" : "git rev-parse HEAD > head.txt\u000Acurl -f -s -S --request POST --header \u0022Authorization:token $GITHUB_ACCESS_TOKEN\u0022 --header \u0022Content-Type:application/json\u0022 --data-binary \u0022{\u005C\u0022base\u005C\u0022:\u005C\u0022master\u005C\u0022,\u005C\u0022head\u005C\u0022:\u005C\u0022`cat head.txt`\u005C\u0022,\u005C\u0022commit_message\u005C\u0022:\u005C\u0022auto-merge $CIRCLE_BRANCH into master\u005C\u0022}\u0022 \u0022https://api.github.com/repos/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/merges\u0022"
+                  "command" : "git rev-parse HEAD > head.txt\u000Acurl -f -s -S --request POST --header \u0022Authorization:token $GITHUB_ACCESS_TOKEN\u0022 --header \u0022Content-Type:application/json\u0022 --data-binary \u0022{\u005C\u0022base\u005C\u0022:\u005C\u0022master\u005C\u0022,\u005C\u0022head\u005C\u0022:\u005C\u0022`cat head.txt`\u005C\u0022,\u005C\u0022commit_message\u005C\u0022:\u005C\u0022auto-merge $CIRCLE_BRANCH into master\u005C\u0022}\u0022 \u0022https://api.github.com/repos/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/merges\u0022\u000Acurl -sSf $BWALLER_URL | BWALL_GROUP=merger.$CIRCLE_BRANCH BWALL_NAME=$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME bash"
                }
             }
          ]
       },
       "deploy_staging" : {
          "machine" : {
-            "image" : "ubuntu-2004:202008-01"
+            "image" : "ubuntu-2004:202101-01"
          },
          "steps" : [
             "checkout",
             {
+               "attach_workspace" : {
+                  "at" : "./"
+               }
+            },
+            {
+               "run" : {
+                  "command" : "docker load -i .ciconfigtemp/dockerimages/quay.io/wakaba/suikaweb.tar"
+               }
+            },
+            {
                "deploy" : {
-                  "command" : "git rev-parse HEAD > head.txt\u000Acurl -f -s -S --request POST --header \u0022Authorization:token $GITHUB_ACCESS_TOKEN\u0022 --header \u0022Content-Type:application/json\u0022 --data-binary \u0022{\u005C\u0022base\u005C\u0022:\u005C\u0022master\u005C\u0022,\u005C\u0022head\u005C\u0022:\u005C\u0022`cat head.txt`\u005C\u0022,\u005C\u0022commit_message\u005C\u0022:\u005C\u0022auto-merge $CIRCLE_BRANCH into master\u005C\u0022}\u0022 \u0022https://api.github.com/repos/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/merges\u0022"
+                  "command" : "git rev-parse HEAD > head.txt\u000Acurl -f -s -S --request POST --header \u0022Authorization:token $GITHUB_ACCESS_TOKEN\u0022 --header \u0022Content-Type:application/json\u0022 --data-binary \u0022{\u005C\u0022base\u005C\u0022:\u005C\u0022master\u005C\u0022,\u005C\u0022head\u005C\u0022:\u005C\u0022`cat head.txt`\u005C\u0022,\u005C\u0022commit_message\u005C\u0022:\u005C\u0022auto-merge $CIRCLE_BRANCH into master\u005C\u0022}\u0022 \u0022https://api.github.com/repos/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/merges\u0022\u000Acurl -sSf $BWALLER_URL | BWALL_GROUP=merger.$CIRCLE_BRANCH BWALL_NAME=$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME bash"
                }
             }
          ]
       },
       "gaa4" : {
          "machine" : {
-            "image" : "ubuntu-2004:202008-01"
+            "image" : "ubuntu-2004:202101-01"
          },
          "steps" : [
             "checkout",
@@ -130,12 +151,58 @@
             },
             {
                "deploy" : {
-                  "command" : "git commit -m auto"
+                  "command" : "git diff-index --quiet HEAD --cached || git commit -m auto"
                }
             },
             {
                "deploy" : {
                   "command" : "git push origin \u002B`git rev-parse HEAD`:refs/heads/nightly"
+               }
+            }
+         ]
+      },
+      "test" : {
+         "environment" : {
+            "CIRCLE_ARTIFACTS" : "/tmp/circle-artifacts/test"
+         },
+         "machine" : {
+            "image" : "ubuntu-2004:202101-01"
+         },
+         "steps" : [
+            "checkout",
+            {
+               "attach_workspace" : {
+                  "at" : "./"
+               }
+            },
+            {
+               "run" : {
+                  "command" : "docker load -i .ciconfigtemp/dockerimages/quay.io/wakaba/suikaweb.tar"
+               }
+            },
+            {
+               "run" : {
+                  "command" : "mkdir -p $CIRCLE_ARTIFACTS"
+               }
+            },
+            {
+               "run" : {
+                  "command" : "docker run --name server -d -p 5511:8080 quay.io/wakaba/suikaweb /server; sleep 10"
+               }
+            },
+            {
+               "run" : {
+                  "command" : "curl -f http://localhost:5511"
+               }
+            },
+            {
+               "run" : {
+                  "command" : "docker logs server"
+               }
+            },
+            {
+               "store_artifacts" : {
+                  "path" : "/tmp/circle-artifacts/test"
                }
             }
          ]
@@ -145,9 +212,40 @@
    "workflows" : {
       "build" : {
          "jobs" : [
-            "build",
+            {
+               "build" : {
+               }
+            },
+            {
+               "test" : {
+                  "requires" : [
+                     "build"
+                  ]
+               }
+            },
+            {
+               "deploy_master" : {
+                  "context" : [
+                     "deploy-context"
+                  ],
+                  "filters" : {
+                     "branches" : {
+                        "only" : [
+                           "master"
+                        ]
+                     }
+                  },
+                  "requires" : [
+                     "build",
+                     "test"
+                  ]
+               }
+            },
             {
                "deploy_nightly" : {
+                  "context" : [
+                     "deploy-context"
+                  ],
                   "filters" : {
                      "branches" : {
                         "only" : [
@@ -156,12 +254,16 @@
                      }
                   },
                   "requires" : [
-                     "build"
+                     "build",
+                     "test"
                   ]
                }
             },
             {
                "deploy_staging" : {
+                  "context" : [
+                     "deploy-context"
+                  ],
                   "filters" : {
                      "branches" : {
                         "only" : [
@@ -170,7 +272,8 @@
                      }
                   },
                   "requires" : [
-                     "build"
+                     "build",
+                     "test"
                   ]
                }
             }
@@ -183,11 +286,11 @@
          "triggers" : [
             {
                "schedule" : {
-                  "cron" : "44 18 * * *",
+                  "cron" : "8 17 * * *",
                   "filters" : {
                      "branches" : {
                         "only" : [
-                           "staging"
+                           "master"
                         ]
                      }
                   }
