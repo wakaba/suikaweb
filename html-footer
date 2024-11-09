@@ -1,1 +1,8 @@
-<script src="/common.js" async data-ads></script>
+<script>
+  let s = document.createElement ('script');
+  s.src = '/common.js';
+  if (!location.pathname.match (/^\/c\//)) {
+    s.setAttribute ('data-ads', '');
+  }
+  document.body.appendChild (s);
+</script>
