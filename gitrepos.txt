@@ -46,7 +46,7 @@ sami.git                        https://github.com/wakaba/samijs
 suikaweb                        
 suikaweb/accounts.git           https://github.com/wakaba/suika-accounts-2008
 suikaweb/admin.git              https://bitbucket.org/wakabatan/suika-admin
-suikaweb/chuubu.git             https://bitbucket.org/wakabatan/suika-chuubu
+suikaweb/chuubu.git             https://bitbucket.org/suikaserver/suika-chuubu
 suikaweb/okuchuu.git            https://bitbucket.org/wakabatan/suika-okuchuu
 suikaweb/root.git               https://bitbucket.org/wakabatan/suika-root
 suikaweb/sccc.git               https://bitbucket.org/wakabatan/suika-sccc
@@ -65,7 +65,7 @@ vc/cvscommitfeed.git            https://github.com/wakaba/commitfeed
 vc/vcutils.git                  https://github.com/wakaba/perl-vcutils
 vc/viewvc.git                   https://bitbucket.org/wakabatan/suika-viewvc
 wakaba-fuyubi.git               https://bitbucket.org/wakabatan/fuyubi
-wakaba-suikaweb.git             https://bitbucket.org/wakabatan/suika-wakaba
+wakaba-suikaweb.git             https://bitbucket.org/suikaserver/suika-wakaba
 wanage.git                      https://github.com/wakaba/wanage
 web                             
 web/antennaconfs.git            https://bitbucket.org/wakabatan/suika-antenna-confs
