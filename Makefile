@@ -55,7 +55,7 @@ deps-data-suika: gitrepos.htaccess
 
 deps-data-hero:
 	mkdir -p local
-	git clone https://bitbucket.org/wakabatan/suikaweb-pubdata.git local/pubdata --depth 1
+	git clone https://bitbucket.org/suikaserver/suikaweb-pubdata.git local/pubdata --depth 1
 	#tar xf local/pubdata/hero-pub-furuike.tar
 	tar xf local/pubdata/hero-public.tar
 	mv public_html local/suika/~hero
