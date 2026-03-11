@@ -21,7 +21,7 @@
             },
             {
                "run" : {
-                  "command" : "docker build -t quay.io/wakaba/suikaweb ."
+                  "command" : "docker build --cache-from quay.io/wakaba/suikaweb -t quay.io/wakaba/suikaweb ."
                }
             },
             {
